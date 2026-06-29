@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "Enter a number (1-6): "
+read num
+
+# Check if the number is between 1 and 6
+if [ "$num" -lt 1 ] || [ "$num" -gt 6 ]; then
+    echo "Error: Please enter a number between 1 and 6."
+    exit 1
+fi
+
+# Loop to print the pattern in reverse order
+for ((i = num; i >= 1; i--)); do
+    line=""
+    # Add the number i, i times (without spaces)
+    for ((j = 1; j <= i; j++)); do
+        line="$line$i"
+    done
+    echo "$line"
+done
