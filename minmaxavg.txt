@@ -1,0 +1,39 @@
+#!/bin/bash
+
+numbers=()
+
+echo "Enter 5 numbers:"
+for ((i=0; i<5; i++))
+do
+    read num
+    numbers[i]=$num
+done
+
+min=${numbers[0]}
+max=${numbers[0]}
+sum=0
+
+for n in "${numbers[@]}"
+do
+    # Check for min
+    if [ $n -lt $min ]
+    then
+        min=$n
+    fi
+    
+    # Check for max
+    if [ $n -gt $max ]
+    then
+        max=$n
+    fi
+
+    # Add to sum
+    sum=$((sum + n))
+done
+
+avg=$((sum / 5))
+
+echo "Numbers: ${numbers[@]}"
+echo "Minimum: $min"
+echo "Maximum: $max"
+echo "Average: $avg"
