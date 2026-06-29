@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Even Odd Script
+# Checks if a number is even or odd
+
+read -p "Enter a number: " num
+mod=$(expr $num % 2)
+if [ $mod -eq 0 ]; then
+    echo "$num is even"
+else
+    echo "$num is odd"
+fi
