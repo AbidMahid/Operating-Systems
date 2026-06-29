@@ -1,0 +1,25 @@
+#!/bin/bash
+
+echo "Enter first number:"
+read num1
+
+echo "Enter second number:"
+read num2
+
+echo "Enter third number:"
+read num3
+
+is_number() {
+    echo "$1" | grep -qE '^[-+]?[0-9]+(\.[0-9]+)?$'
+}
+
+if ! is_number "$num1" || ! is_number "$num2" || ! is_number "$num3"; then
+    echo "Invalid input. Please enter valid integers or floats."
+    exit 1
+fi
+
+min=$(echo "$num1 $num2 $num3" | awk '{min=$1; if($2<min) min=$2; if($3<min) min=$3; print min}')
+max=$(echo "$num1 $num2 $num3" | awk '{max=$1; if($2>max) max=$2; if($3>max) max=$3; print max}')
+
+echo "Minimum value: $min"
+echo "Maximum value: $max"
